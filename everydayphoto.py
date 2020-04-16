@@ -14,6 +14,20 @@ datemd=datetime.now().strftime("%Y/%m%d")
 #国家地理每日一图
 imgsurl='http://www.ngchina.com.cn/photography/photo_of_the_day/'
 
+def pushmywchat(text,desp):
+	dd={'text':text,"desp":desp}
+	url = "https://sc.ftqq.com/SCU88589T51d420a21b4ff294fe0ac4673bf201235e65c03803268.send"
+
+	payload = {}
+	headers= {}
+	try:
+		response = requests.request("GET", url, params=dd, headers=headers, data = payload)
+		response.raise_for_status()
+		response.encoding='utf-8'
+		return(response.text)
+	except:
+		return "产生异常，发送微信消息失败"
+		
 def mail2qq(atturl):
 	# 第三方 SMTP 服务
 	mail_host="smtp.163.com"  #设置服务器
@@ -95,3 +109,4 @@ else:
 	atturl=consoup.find('div',{"class":"content js_content"}).div.div.div.ul.li.a.img['src']
 	#print(atturl)	
 	mail2qq(atturl)
+	print(pushmywchat("每日一图","邮件发送成功，请注意查收"))
