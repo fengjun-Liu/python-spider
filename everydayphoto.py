@@ -11,6 +11,7 @@ from datetime import datetime
 
 #获取今日日期
 datemd=datetime.now().strftime("%Y/%m%d")
+datemd2=datetime.now().strftime("%Y %m-%d")
 #国家地理每日一图
 imgsurl='http://www.ngchina.com.cn/photography/photo_of_the_day/'
 
@@ -98,7 +99,7 @@ conurl=''
 for imgurl in imgurls:
 	if imgurl.img['src'].find(datemd)>0:
 		conurl='http://www.ngchina.com.cn'+imgurl['href']
-		subject=imgurl.parent.div.h5.a.text
+		subject=datemd2+"每日一图:"+imgurl.parent.div.h5.a.text
 		break
 if conurl=='':
 	print("今日无图")
@@ -109,4 +110,4 @@ else:
 	atturl=consoup.find('div',{"class":"content js_content"}).div.div.div.ul.li.a.img['src']
 	#print(atturl)	
 	mail2qq(atturl)
-	print(pushmywchat("每日一图","邮件发送成功，请注意查收"))
+	print(pushmywchat("每日一图",datemd2+"邮件发送成功，请注意查收"))
