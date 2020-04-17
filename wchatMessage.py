@@ -2,7 +2,7 @@ import requests
 
 def pushmywchat(text,desp):
 	dd={'text':text,"desp":desp}
-	url = "https://sc.ftqq.com/SCU88589T51d420a21b4ff294fe0ac4673bf201235e65c03803268.send"
+	url = "https://sc.ftqq.com/[yourid].send"
 
 	payload = {}
 	headers= {}
