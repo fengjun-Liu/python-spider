@@ -99,7 +99,7 @@ conurl=''
 for imgurl in imgurls:
 	if imgurl.img['src'].find(datemd)>0:
 		conurl='http://www.ngchina.com.cn'+imgurl['href']
-		subject=datemd2+"每日一图:"+imgurl.parent.div.h5.a.text
+		subject=datemd2+imgurl.parent.div.h5.a.text
 		break
 if conurl=='':
 	print("今日无图")
